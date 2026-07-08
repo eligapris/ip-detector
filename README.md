@@ -36,9 +36,34 @@ This is a **research artifact**, not legal advice. Consult a registered patent a
 
 ## Installation
 
-### 1. Install the skill files
+### Recommended — Skills CLI (`npx skills`)
 
-Copy or clone this repository into your agent skills directory.
+The fastest way to install for Cursor, Codex, and other supported agents:
+
+```bash
+npx skills add labKnowledge/ip-detector -g -y
+```
+
+| Flag | Purpose |
+|------|---------|
+| `-g` | Install globally (user-level, all projects) |
+| `-y` | Skip confirmation prompts |
+
+**Other useful commands:**
+
+```bash
+npx skills find ip patent prior art   # search the registry
+npx skills check                      # check for updates
+npx skills update                     # update installed skills
+```
+
+Browse the ecosystem at [skills.sh](https://skills.sh/).
+
+> **Scripts note:** `npx skills add` installs the agent skill (`SKILL.md`) for chat use. For the Python tooling (`scripts/`, `references/`, `assets/`), clone the full repository (below).
+
+### Full install — git clone (includes scripts)
+
+Use this when you want concept extraction and PDF generation on disk:
 
 **Cursor**
 
@@ -63,7 +88,7 @@ cp -r /path/to/ip-detector .cursor/skills/ip-detector
 
 The agent discovers the skill from `SKILL.md` in that folder. No extra registration step is required beyond placing the files in a supported skills path.
 
-### 2. Install Python dependencies
+### Python dependencies
 
 The concept-extraction script uses only the Python standard library. PDF generation requires **ReportLab**:
 
@@ -73,7 +98,7 @@ pip install reportlab
 
 Python **3.9+** is recommended.
 
-### 3. (Optional) Verify scripts
+### (Optional) Verify scripts
 
 From the skill root:
 
@@ -96,7 +121,8 @@ python scripts/generate_dossier.py \
 
 ### With an AI agent (recommended)
 
-Invoke the skill in natural language. The agent reads `SKILL.md` and runs the full six-phase workflow.
+1. Install via `npx skills add` (above) or clone the repository into your skills directory.
+2. Invoke the skill in natural language. The agent reads `SKILL.md` and runs the full six-phase workflow.
 
 **Example prompts:**
 
@@ -192,6 +218,9 @@ python scripts/generate_dossier.py \
 ```
 ip-detector/
 ├── SKILL.md                          # Agent instructions (main entry point)
+├── skills-lock.json                  # Skills CLI lockfile (npx skills)
+├── .agents/skills/ip-detector/       # Skills CLI install target
+│   └── SKILL.md
 ├── README.md                         # This file
 ├── scripts/
 │   ├── extract_concepts.py           # Codebase triage → JSON

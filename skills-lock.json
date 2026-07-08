@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "ip-detector": {
+      "source": "labKnowledge/ip-detector",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "fd59dcda18246b43f65c7fffc162355932d856f893ef63732a3f7e1551d41f1c"
+    }
+  }
+}
