@@ -1,6 +1,6 @@
 # IP Detector
 
-**Repository:** [github.com/labKnowledge/ip-detector](https://github.com/labKnowledge/ip-detector)
+**Repository:** [github.com/eligapris/ip-detector](https://github.com/eligapris/ip-detector)
 
 A Cursor / Claude agent skill that performs **numbers-first intellectual property due diligence** on codebases, algorithms, whitepapers, and technical concepts. It is designed to talk you **out** of filing when the evidence does not support it — and to flag the rare cases where filing is genuinely worth the cost.
 
@@ -36,12 +36,10 @@ This is a **research artifact**, not legal advice. Consult a registered patent a
 
 ## Installation
 
-### Recommended — Skills CLI (`npx skills`)
-
-The fastest way to install for Cursor, Codex, and other supported agents:
+### Skills CLI (`npx skills`)
 
 ```bash
-npx skills add labKnowledge/ip-detector -g -y
+npx skills add eligapris/ip-detector -g -y
 ```
 
 | Flag | Purpose |
@@ -49,34 +47,18 @@ npx skills add labKnowledge/ip-detector -g -y
 | `-g` | Install globally (user-level, all projects) |
 | `-y` | Skip confirmation prompts |
 
-**Other useful commands:**
-
-```bash
-npx skills find ip patent prior art   # search the registry
-npx skills check                      # check for updates
-npx skills update                     # update installed skills
-```
-
-Browse the ecosystem at [skills.sh](https://skills.sh/).
-
-> **Scripts note:** `npx skills add` installs the agent skill (`SKILL.md`) for chat use. For the Python tooling (`scripts/`, `references/`, `assets/`), clone the full repository (below).
-
-### Full install — git clone (includes scripts)
-
-Use this when you want concept extraction and PDF generation on disk:
+### Git clone (includes scripts)
 
 **Cursor**
 
 ```bash
-git clone https://github.com/labKnowledge/ip-detector.git ~/.cursor/skills/ip-detector
-# or symlink an existing checkout:
-ln -s /path/to/ip-detector ~/.cursor/skills/ip-detector
+git clone https://github.com/eligapris/ip-detector.git ~/.cursor/skills/ip-detector
 ```
 
 **Claude Code**
 
 ```bash
-git clone https://github.com/labKnowledge/ip-detector.git ~/.claude/skills/ip-detector
+git clone https://github.com/eligapris/ip-detector.git ~/.claude/skills/ip-detector
 ```
 
 **Project-local (team / repo-specific)**
@@ -85,8 +67,6 @@ git clone https://github.com/labKnowledge/ip-detector.git ~/.claude/skills/ip-de
 mkdir -p .cursor/skills
 cp -r /path/to/ip-detector .cursor/skills/ip-detector
 ```
-
-The agent discovers the skill from `SKILL.md` in that folder. No extra registration step is required beyond placing the files in a supported skills path.
 
 ### Python dependencies
 
@@ -97,23 +77,6 @@ pip install reportlab
 ```
 
 Python **3.9+** is recommended.
-
-### (Optional) Verify scripts
-
-From the skill root:
-
-```bash
-python scripts/extract_concepts.py --help
-python scripts/generate_dossier.py --help
-```
-
-Generate a sample PDF from the bundled example:
-
-```bash
-python scripts/generate_dossier.py \
-  --data assets/example_analysis.json \
-  --output /tmp/ip_dossier_example.pdf
-```
 
 ---
 
@@ -141,11 +104,7 @@ python scripts/generate_dossier.py \
 | Whitepaper / abstract / `.md` / `.txt` | Agent extracts novelty, mechanism, application, and search seeds |
 | GitHub URL | README + top source files treated as a codebase |
 
-The agent performs **web research** during the run (patent databases, Scholar, market reports). Network access is required for a full analysis.
-
 ### Manual script usage
-
-You can run the helper scripts yourself; the agent normally orchestrates them.
 
 **Phase 1 — Extract candidate concepts from a codebase**
 
@@ -203,7 +162,7 @@ python scripts/generate_dossier.py \
 - Market value &lt; 25 → **DO NOT FILE**
 - 10-year cost &gt; projected 10-year capture → **DO NOT FILE**
 
-### Philosophy (why verdicts feel harsh)
+### Philosophy
 
 1. Default verdict is **DO NOT FILE** until cited evidence earns each point.
 2. **No number, no score** — missing CAGR or prior-art counts mean zero, not guesses.
@@ -217,14 +176,14 @@ python scripts/generate_dossier.py \
 
 ```
 ip-detector/
-├── SKILL.md                          # Agent instructions (main entry point)
-├── skills-lock.json                  # Skills CLI lockfile (npx skills)
-├── .agents/skills/ip-detector/       # Skills CLI install target
+├── SKILL.md
+├── skills-lock.json
+├── .agents/skills/ip-detector/
 │   └── SKILL.md
-├── README.md                         # This file
+├── README.md
 ├── scripts/
-│   ├── extract_concepts.py           # Codebase triage → JSON
-│   └── generate_dossier.py           # Analysis JSON → PDF
+│   ├── extract_concepts.py
+│   └── generate_dossier.py
 ├── references/
 │   ├── ip-law-primer.md
 │   ├── prior-art-search-protocol.md
@@ -232,7 +191,7 @@ ip-detector/
 │   ├── filing-cost-matrix.md
 │   └── scoring-rubric.md
 └── assets/
-    └── example_analysis.json         # Full schema example for PDF generation
+    └── example_analysis.json
 ```
 
 ---
@@ -243,8 +202,6 @@ A typical run produces:
 
 1. **`ip_dossier_<concept_slug>.pdf`** — Cover verdict, executive summary, prior-art matrix, market and cost tables, scoring breakdown, and verdict-specific section (“Why this is a rock, not gold,” “Conditions that would change this to FILE,” or “Filing roadmap”).
 2. **`ip_dossier_<concept_slug>.json`** — Raw analysis for re-runs or edits.
-
-Save location is chosen by the agent or you when calling `generate_dossier.py` (`--output`).
 
 ---
 
