@@ -39,13 +39,15 @@ This is a **research artifact**, not legal advice. Consult a registered patent a
 ### Skills CLI (`npx skills`)
 
 ```bash
-npx skills add eligapris/ip-detector -g -y
+npx skills add eligapris/ip-detector -g -y \
+  -a cursor -a claude-code -a qwen-code -a codex
 ```
 
 | Flag | Purpose |
 |------|---------|
 | `-g` | Install globally (user-level, all projects) |
 | `-y` | Skip confirmation prompts |
+| `-a` | Target agents (pin the ones you use; omit to install to all detected agents) |
 
 **Listing page:** [skills.sh/eligapris/ip-detector/ip-detector](https://skills.sh/eligapris/ip-detector/ip-detector)
 
