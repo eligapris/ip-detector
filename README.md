@@ -2,7 +2,7 @@
 
 **Repository:** [github.com/eligapris/ip-detector](https://github.com/eligapris/ip-detector)
 
-A Cursor / Claude agent skill that performs **numbers-first intellectual property due diligence** on codebases, algorithms, whitepapers, and technical concepts. It is designed to talk you **out** of filing when the evidence does not support it — and to flag the rare cases where filing is genuinely worth the cost.
+An agent skill for **Cursor**, **Claude Code**, **Codex**, **Qwen Code**, and any skills-compatible agent. It performs **numbers-first intellectual property due diligence** on codebases, algorithms, whitepapers, and technical concepts. It is designed to talk you **out** of filing when the evidence does not support it — and to flag the rare cases where filing is genuinely worth the cost.
 
 The deliverable is a **PDF dossier** with a one-line verdict on page 1:
 
@@ -63,6 +63,18 @@ git clone https://github.com/eligapris/ip-detector.git ~/.cursor/skills/ip-detec
 
 ```bash
 git clone https://github.com/eligapris/ip-detector.git ~/.claude/skills/ip-detector
+```
+
+**Codex**
+
+```bash
+git clone https://github.com/eligapris/ip-detector.git ~/.codex/skills/ip-detector
+```
+
+**Qwen Code**
+
+```bash
+git clone https://github.com/eligapris/ip-detector.git ~/.qwen/skills/ip-detector
 ```
 
 **Project-local (team / repo-specific)**
