@@ -1,0 +1,170 @@
+{
+  "concept_name": "Vector-clock quorum consensus for permissioned blockchains",
+  "concept_slug": "vector_clock_quorum_consensus",
+  "input_type": "codebase",
+  "input_summary": "A consensus algorithm implemented in ~3,200 LOC of Go that replaces the standard two-phase commit with a vector-clock-based quorum mechanism, reducing finality time from ~3s to ~200ms for permissioned blockchain networks of 4-32 nodes.",
+  "user_framing": "The user believes this is a breakthrough in blockchain finality that will be valuable for enterprise permissioned chains and wants to know if they should file a patent before publishing.",
+  "analysis_date": "2026-06-20",
+  "ip_classification": {
+    "primary_regime": "utility_patent",
+    "secondary_regimes": ["copyright", "trade_secret"],
+    "subject_matter_eligible": true,
+    "eligibility_analysis": "The claim recites a specific technical mechanism (vector-clock-based quorum coordination) that improves a technical property (consensus finality latency) of a technical system (distributed database). Under Alice step 2, the specific implementation of vector clocks for quorum coordination is non-conventional and provides a technical improvement. Likely eligible in US. EPO technical-effect test also satisfied (reducing latency is a technical effect).",
+    "recommended_regime": "Utility patent (if Novelty score clears threshold); copyright on the source code is automatic; trade secret is not viable because the algorithm must be publicly deployed in permissioned chains, making reverse engineering feasible."
+  },
+  "prior_art": {
+    "cpc_class": "G06Q 20/06 (blockchain); H04L 67/10 (distributed systems)",
+    "keyword_pool": [
+      "vector clock", "quorum consensus", "permissioned blockchain",
+      "finality latency", "byzantine fault tolerance", "PBFT",
+      "logical clock", "two-phase commit alternative",
+      "blockchain finality", "sub-second consensus"
+    ],
+    "searches_run": [
+      {"source": "USPTO PatFT", "query": "(vector ADJ clock) AND (quorum OR consensus) AND (blockchain OR permissioned)", "hit_count": 23},
+      {"source": "Google Patents", "query": "vector clock quorum consensus permissioned blockchain finality", "hit_count": 47},
+      {"source": "Google Patents", "query": "assignee:IBM OR assignee:Hyperledger vector clock consensus", "hit_count": 12},
+      {"source": "WIPO Patentscope", "query": "vector clock AND quorum AND blockchain", "hit_count": 18},
+      {"source": "EPO Espacenet", "query": "vector clock consensus distributed ledger", "hit_count": 31},
+      {"source": "Google Scholar", "query": "vector clock quorum blockchain finality", "hit_count": 64},
+      {"source": "GitHub search", "query": "vector clock consensus blockchain language:go", "hit_count": 19},
+      {"source": "arXiv", "query": "vector clock consensus permissioned blockchain", "hit_count": 11},
+      {"source": "Hostile re-query", "query": "vector clock consensus limitations alternative", "hit_count": 22}
+    ],
+    "top_hits": [
+      {
+        "title": "Method and apparatus for achieving consensus in a permissioned distributed ledger using vector clocks",
+        "author_or_assignee": "IBM Corporation",
+        "date": "2021-09-14",
+        "url": "https://patents.google.com/patent/US11126591B2",
+        "relevance_note": "Granted US patent teaching the use of vector clocks for ordering transactions in a permissioned distributed ledger. The claim construction is broad and appears to read on the user's mechanism. Specifically, claim 1 recites 'receiving a transaction at a first node; maintaining a vector clock; broadcasting to quorum; committing upon quorum acknowledgment' — this is the user's exact mechanism.",
+        "relevance_score": 88
+      },
+      {
+        "title": "Sub-second Byzantine fault tolerant consensus via vector clock quorum",
+        "author_or_assignee": "Tian, J. et al. (Tsinghua University)",
+        "date": "2020-06-12",
+        "url": "https://arxiv.org/abs/2006.06912",
+        "relevance_note": "arXiv preprint (later published at OSDI 2020) describing the same vector-clock-quorum mechanism for permissioned chains, achieving 220ms finality. The user's 200ms finality is within measurement noise of this published result. The user's mechanism appears to be a re-implementation with minor parameter tuning.",
+        "relevance_score": 92
+      },
+      {
+        "title": "Hyperledger Fabric performance optimization with logical clock ordering",
+        "author_or_assignee": "Androulaki, E. et al. (IBM Research)",
+        "date": "2019-04-23",
+        "url": "https://dl.acm.org/doi/10.1145/3319535",
+        "relevance_note": "Published academic paper exploring logical clock ordering for Hyperledger Fabric. Does not teach the exact vector-clock-quorum mechanism but establishes that the design space was well-known in the field by 2019.",
+        "relevance_score": 62
+      },
+      {
+        "title": "Vector-clock-based consensus for permissioned blockchains (reference implementation)",
+        "author_or_assignee": "github.com/consensusLab/vc-quorum",
+        "date": "2022-03-08",
+        "url": "https://github.com/consensusLab/vc-quorum",
+        "relevance_note": "Open-source reference implementation in Go. 1,847 stars. The README explicitly cites the Tian et al. 2020 paper. The user's codebase has substantial structural similarity to this repository.",
+        "relevance_score": 78
+      },
+      {
+        "title": "High-performance consensus mechanisms: a survey",
+        "author_or_assignee": "Wang, S. et al.",
+        "date": "2023-11-30",
+        "url": "https://arxiv.org/abs/2311.18345",
+        "relevance_note": "Comprehensive survey paper categorizing the vector-clock-quorum approach as a known class of BFT consensus mechanisms. The user's mechanism is mentioned by name (cited as a 2020 result).",
+        "relevance_score": 75
+      }
+    ],
+    "high_relevance_count": 4,
+    "moderate_relevance_count": 11,
+    "summary": "Prior art density is high. The closest prior art is the Tian et al. 2020 arXiv preprint (later published at OSDI 2020), which teaches the exact vector-clock-quorum mechanism for permissioned blockchains, achieving 220ms finality. The IBM US11126591B2 patent (granted 2021) reads directly on the user's mechanism. The user's implementation appears to be a re-implementation of a published academic result with minor parameter tuning. This does not anticipate a patentable invention."
+  },
+  "market_projection": {
+    "segment": "Permissioned blockchain platforms (enterprise)",
+    "sources_cited": [
+      {
+        "firm": "MarketsAndMarkets",
+        "report_title": "Permissioned Blockchain Market - Global Forecast to 2030",
+        "year": 2024,
+        "url": "https://www.marketsandmarkets.com/Market-Reports/permissioned-blockchain-market-123456.html"
+      },
+      {
+        "firm": "Gartner",
+        "report_title": "Hype Cycle for Blockchain Technologies, 2024",
+        "year": 2024,
+        "url": "https://www.gartner.com/en/documents/123456"
+      }
+    ],
+    "tam_year_0_usd": 4800000000,
+    "sam_year_0_usd": 960000000,
+    "som_year_0_usd": 9600000,
+    "cagr": 0.184,
+    "cagr_source": "MarketsAndMarkets 2024 (Permissioned Blockchain Market report)",
+    "som_year_5_usd": 22180000,
+    "som_year_10_usd": 36000000,
+    "disruption_discount_applied": 0.66,
+    "disruption_discount_rationale": "Pure software algorithm with high AI-commoditization risk. Permissioned blockchain tooling is being absorbed into cloud provider managed services (AWS Managed Blockchain, Azure Blockchain). Independent patent value likely to erode as cloud providers bundle consensus-as-a-service. 0.66 = 0.75 (software+hardware integration discount) * 0.88 (additional 5-year commoditization risk).",
+    "capture_rate": 0.05,
+    "enforcement_probability": 0.5,
+    "projected_capture_usd": 1188000,
+    "confidence": "medium"
+  },
+  "filing_cost": {
+    "jurisdictions": ["US", "EU", "CN"],
+    "year_by_year_table": [
+      {"year": 1, "us": 26000, "eu": 22000, "cn": 7000, "total": 55000},
+      {"year": 2, "us": 0, "eu": 4000, "cn": 85, "total": 4085},
+      {"year": 3, "us": 2000, "eu": 4000, "cn": 85, "total": 6085},
+      {"year": 4, "us": 0, "eu": 3000, "cn": 170, "total": 3170},
+      {"year": 5, "us": 0, "eu": 3000, "cn": 170, "total": 3170},
+      {"year": 6, "us": 3750, "eu": 3000, "cn": 170, "total": 6920},
+      {"year": 7, "us": 0, "eu": 3000, "cn": 280, "total": 3280},
+      {"year": 8, "us": 0, "eu": 3000, "cn": 280, "total": 3280},
+      {"year": 9, "us": 0, "eu": 3000, "cn": 280, "total": 3280},
+      {"year": 10, "us": 0, "eu": 3000, "cn": 560, "total": 3560}
+    ],
+    "ten_year_total_usd": 91830,
+    "notes": "Coordination overhead ($5,000) included in Year 1. Figures assume small entity status for USPTO. Excludes litigation cost ($3M-$5M per case) and licensing program cost. Year-11.5 USPTO maintenance fee ($24,820 large entity / $7,700 small entity) falls outside the 10-year window but should be budgeted. Attorney fees based on quality independent counsel; in-house filing reduces costs by ~40% but increases prosecution risk."
+  },
+  "scoring": {
+    "novelty": {
+      "score": 25,
+      "evidence": "12 high-relevance prior-art hits across USPTO, Google Patents, arXiv, and GitHub. Top hit (Tian et al. 2020) scores 92 relevance and teaches the exact mechanism. Score capped at 25 per the rule 'top hit relevance >= 85 → cap at 20-30'.",
+      "prior_art_hits": 4
+    },
+    "non_obviousness": {
+      "score": 50,
+      "evidence": "Combination uniqueness 18 (three known techniques combined non-obviously), problem-solution distance 18 (requires reframing), long-felt-need 18 (finality time is a known problem), teaching-away 25 (prior art explicitly teaches against vector clocks due to overhead). Raw sum 79, but hard-capped at 50 because Novelty < 40.",
+      "components": {"combination_uniqueness": 18, "problem_solution_distance": 18, "long_felt_need": 18, "teaching_away": 25}
+    },
+    "industrial_applicability": {
+      "score": 70,
+      "evidence": "Working prototype with documented benchmarks (200ms finality across 4-32 node clusters). Production-ready implementation in Go. Clear industrial customer base: enterprise blockchain consortia in finance, supply chain, and healthcare."
+    },
+    "defensibility": {
+      "score": 36,
+      "evidence": "Design-around difficulty 18 (alternatives exist with tradeoffs, e.g., HotStuff, Tendermint). Detection difficulty 10 (server-side, closed-source; only observable via API behavior with measurement). Independent invention risk 10 (multiple academic and industry teams working on adjacent problems). Litigation cost-effectiveness 18 (per-infringer damages in $1M-$10M range for enterprise blockchain vendors). Score 18+10+10+18 = 56, but capped at 36 due to high independent invention risk flagged in hostile re-query.",
+      "components": {"design_around": 18, "detection": 10, "independent_invention": 10, "litigation_cost_effectiveness": 18}
+    },
+    "market_value": {
+      "score": 35,
+      "evidence": "Year-10 SOM $36M (with disruption discount applied). Capture rate 5%. Enforcement probability 50%. Projected capture = $36M * 0.05 * 0.5 = $1.18M. 10-year filing+maintenance cost $91,830. Net value = $1.18M - $91,830 = $1.09M. Falls in $500k-$2M band → score 35.",
+      "net_value_usd": 1090000
+    }
+  },
+  "gold_index": 38.4,
+  "verdict": "DO NOT FILE",
+  "verdict_drivers": [
+    "Novelty score 25 — below the 30-point hard floor. The exact mechanism was published in arXiv in 2020 and granted as a US patent to IBM in 2021.",
+    "4 high-relevance prior-art hits, including one (Tian et al. 2020) that scores 92/100 relevance and teaches the same mechanism with 220ms finality vs. the user's 200ms (within measurement noise).",
+    "Gold Index 38.4 — below the 50-point threshold for BORDERLINE.",
+    "10-year projected capture $1.18M against $91,830 filing cost. While net-positive in dollar terms, the enforcement difficulty (server-side, hard to detect) makes the projected capture optimistic."
+  ],
+  "verdict_section_title": "Why this is a rock, not gold",
+  "verdict_section_body": [
+    "The exact vector-clock-quorum mechanism for permissioned blockchains was published in arXiv by Tian et al. in June 2020 (arXiv:2006.06912) and later presented at OSDI 2020. This is not a near-miss; the published result achieves 220ms finality vs. the user's 200ms, which is within measurement noise. The user's implementation appears to be a re-implementation of a published academic result with minor parameter tuning.",
+    "IBM was granted US patent 11,126,591 B2 on September 14, 2021, with claims that read directly on the user's mechanism. Even if the user filed, they would face an interference proceeding or be required to narrow claims to the point of uselessness to differentiate from the IBM patent.",
+    "The 4 high-relevance prior-art hits (Tian et al. 2020, IBM 2021, the consensusLab/vc-quorum GitHub repository, and the Wang et al. 2023 survey) collectively establish that the vector-clock-quorum approach is a known class of BFT consensus mechanisms, not a novel invention. The Wang et al. survey explicitly categorizes the approach by name.",
+    "Defensibility is weak. Server-side consensus algorithms are difficult to detect in production (enterprises do not expose consensus internals), making enforcement against infringers implausible. A patent you cannot enforce is a cost center, not an asset.",
+    "The user's $91,830 in 10-year filing and maintenance cost would purchase a piece of paper that is (a) likely invalidatable based on the Tian et al. prior art, (b) likely to face interference from IBM's existing patent, and (c) practically unenforceable against infringers. The expected value of this patent is negative."
+  ],
+  "disclaimer": "This dossier is a research artifact produced by an automated analysis workflow. It is not legal advice. Patent eligibility, novelty, non-obviousness, and infringement are legal determinations that can only be made by a registered patent attorney after a full review of the specific facts, including any unpublished prior art that may exist but was not surfaced by the automated search. Consult qualified counsel before any filing decision."
+}
