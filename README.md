@@ -1,5 +1,7 @@
 # IP Detector
 
+**Repository:** [github.com/labKnowledge/ip-detector](https://github.com/labKnowledge/ip-detector)
+
 A Cursor / Claude agent skill that performs **numbers-first intellectual property due diligence** on codebases, algorithms, whitepapers, and technical concepts. It is designed to talk you **out** of filing when the evidence does not support it — and to flag the rare cases where filing is genuinely worth the cost.
 
 The deliverable is a **PDF dossier** with a one-line verdict on page 1:
@@ -41,7 +43,7 @@ Copy or clone this repository into your agent skills directory.
 **Cursor**
 
 ```bash
-git clone <repo-url> ~/.cursor/skills/ip-detector
+git clone https://github.com/labKnowledge/ip-detector.git ~/.cursor/skills/ip-detector
 # or symlink an existing checkout:
 ln -s /path/to/ip-detector ~/.cursor/skills/ip-detector
 ```
@@ -49,7 +51,7 @@ ln -s /path/to/ip-detector ~/.cursor/skills/ip-detector
 **Claude Code**
 
 ```bash
-git clone <repo-url> ~/.claude/skills/ip-detector
+git clone https://github.com/labKnowledge/ip-detector.git ~/.claude/skills/ip-detector
 ```
 
 **Project-local (team / repo-specific)**
