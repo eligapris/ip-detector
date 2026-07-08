@@ -47,6 +47,10 @@ npx skills add eligapris/ip-detector -g -y
 | `-g` | Install globally (user-level, all projects) |
 | `-y` | Skip confirmation prompts |
 
+**Listing page:** [skills.sh/eligapris/ip-detector/ip-detector](https://skills.sh/eligapris/ip-detector/ip-detector)
+
+> Prefer `npx skills add` (above). `npx skills find` may not show this skill until skills.sh indexes install telemetry.
+
 ### Git clone (includes scripts)
 
 **Cursor**
